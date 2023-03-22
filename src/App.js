@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import TodoList from "./components/TodoList";
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+// import {DndContext} from '@dnd-kit/core';
+// import {Draggable} from '@dnd-kit/Draggable';
+// import {Droppable} from '@dnd-kit/Droppable';
 
-function App() {
+function App () {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <DndProvider backend={HTML5Backend}>
+    <div className="todo-app">
+
+        <TodoList />
+      
     </div>
+    </DndProvider>
   );
 }
+
+
 
 export default App;
