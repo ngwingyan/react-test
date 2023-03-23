@@ -3,11 +3,11 @@ import React, { useState } from "react";
 function TodoForm(props) {
   const [input, setInput] = useState("");
 
-  const handleChange = (e) => {
+  const change = (e) => {
     setInput(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const submit = (e) => {
     e.preventDefault();
 
     props.onSubmit({
@@ -18,14 +18,14 @@ function TodoForm(props) {
     setInput("");
   };
   return (
-    <form className="todo-form" onSubmit={handleSubmit}>
+    <form className="todo-form" onSubmit={submit}>
       <input
         type="text"
         placeholder="Add activity"
         value={input}
         name="text"
         className="todo-input"
-        onChange={handleChange}
+        onChange={change}
       />
       <button className="todo-btn">Add activity</button>
     </form>

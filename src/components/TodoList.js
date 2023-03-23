@@ -40,6 +40,7 @@ function TodoList() {
       const updatedActivities = [...activities];
       updatedActivities.splice(index, 1);
       setActivities(updatedActivities);
+      console.log(updatedActivities);
     }
   };
 

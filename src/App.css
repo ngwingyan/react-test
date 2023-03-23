@@ -59,6 +59,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: center;
     width: 520px;
     min-height: 600px;
     background: blueviolet;
@@ -74,7 +75,7 @@
   
   .activity-row {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     margin: 10px 10px;
   }
   
@@ -154,5 +155,55 @@
   
   .edit-icon {
     color: #fff;
+  }
+  
+  .card h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  .card button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .activity-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #f0f0f0;
+  }
+  
+  .icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .delete-icon {
+    font-size: 20px;
+    color: red;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .edit-icon {
+    font-size: 20px;
+    color: blue;
+    cursor: pointer;
   }
   

@@ -4,64 +4,60 @@ import Card from "./Card";
 import update from 'immutability-helper';
 
 function Todo({
-  activities,
-  completeActivity,
-  removeActivity,
-  updateActivity,
-  setActivities,
+    activities,
+    completeActivity,
+    removeActivity,
+    updateActivity,
+    setActivities,
 }) {
-  const [edit, setEdit] = useState({
-    id: null,
-    value: "",
-  });
-
-  const submitUpdate = (value) => {
-    updateActivity(edit.id, value);
-    setEdit({
-      id: null,
-      value: "",
+    const [edit, setEdit] = useState({
+        id: null,
+        value: "",
     });
-  };
 
-  
+    const submitUpdate = (value) => {
+        updateActivity(edit.id, value);
+        setEdit({
+            id: null,
+            value: "",
+        });
+    };
 
-  const moveCard = useCallback((dragIndex, hoverIndex) => {
-    setActivities((prevCards) =>
-      update(prevCards, {
-        $splice: [
-          [dragIndex, 1],
-          [hoverIndex, 0, prevCards[dragIndex]],
-        ],
-      }),
-    )
-  }, [setActivities])
- 
-  // export const Card = ({ id, text, index, moveCard }) => {
+    // function from React-DND
+    const moveCard = useCallback((dragIndex, hoverIndex) => {
+        setActivities((prevCards) =>
+            update(prevCards, {
+                $splice: [
+                    [dragIndex, 1],
+                    [hoverIndex, 0, prevCards[dragIndex]],
+                ],
+            }),
+        )
+    }, [setActivities])
 
-  const renderCard = useCallback((card, index) => {
-    return (
+    // function from React-DND
+    const renderCard = useCallback((card, index) => {
+        return (
 
-      <Card
-          activity={card}
-          key={card.id}
-          index={index}
-          id={card.id}
-          text={card.text}
-          moveCard={moveCard}
-          completeActivity
-          removeActivity
-          setEdit
-        />
-    
-    )
+            <Card
+                activity={card}
+                key={card.id}
+                index={index}
+                id={card.id}
+                text={card.text}
+                moveCard={moveCard}
+                completeActivity
+                setEdit={setEdit}
+                removeActivity={removeActivity}
+            />
 
-  }, [moveCard])
+        )
+    }, [moveCard, removeActivity])
 
-  if (edit.id) {
-    return <TodoForm edit={edit} onSubmit={submitUpdate} />;
-  }
-
-  return activities.map((activity, index) => renderCard(activity, index));
+    if (edit.id) {
+        return <TodoForm edit={edit} onSubmit={submitUpdate} />;
+    }
+    return activities.map((activity, index) => renderCard(activity, index));
 }
 
 export default Todo;
